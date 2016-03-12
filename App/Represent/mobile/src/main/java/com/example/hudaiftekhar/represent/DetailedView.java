@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.content.Intent;
 
+import com.squareup.picasso.Picasso;
+
 public class DetailedView extends AppCompatActivity {
 
     @Override
@@ -31,83 +33,77 @@ public class DetailedView extends AppCompatActivity {
 
 
         Bundle bundle = getIntent().getExtras();
-        String val = bundle.getString("name2");
 
-        String val2 = bundle.getString("LOC_NAME3");
+        if (bundle.getString("LOC_NAME6") != null) {
+            String val = bundle.getString("LOC_NAME6");
+            System.out.println("OLIVIAAAAAA" + val);
+            String[] gps = val.split("\t");
 
-        TextView textView = (TextView) findViewById(R.id.repName1);
-        TextView textView2 = (TextView) findViewById(R.id.partyName1);
-        TextView textView3 = (TextView) findViewById(R.id.endOfTerm);
-        TextView textView4 = (TextView) findViewById(R.id.committeeName);
-        TextView textView5 = (TextView) findViewById(R.id.nameRecentBills);
-        ImageView imageView = (ImageView) findViewById(R.id.photo4);
+            TextView textView = (TextView) findViewById(R.id.repName1);
+            TextView textView2 = (TextView) findViewById(R.id.partyName1);
+            TextView textView3 = (TextView) findViewById(R.id.endOfTerm);
+            TextView textView4 = (TextView) findViewById(R.id.committeeName);
+            TextView textView5 = (TextView) findViewById(R.id.nameRecentBills);
 
-        if (val2 != null) {
-            val = val2;
-        }
+            textView.setText(gps[0]);
+            textView2.setText(gps[1]);
+            textView3.setText(gps[2]);
+            textView4.setText(gps[3]);
+            textView5.setText(gps[4]);
 
-        if (val.equals("Barbara Boxer")) {
-            textView.setText("Barbara Boxer");
-            textView2.setText("Democrat");
-            textView3.setText("End of the Term: 2016");
-            textView4.setText("Committee Name: Senate - Veterans' Affairs");
-            textView5.setText("Name of Recent Bills: S. 2487: Female Veteran Suicide Prevention Act\n" +
-                    "S. 2412: Tule Lake National Historic Site Establishment Act of 2015\n" +
-                    "S. 2204: End of Suffering Act of 2015\n" +
-                    "S. 2157: SAFE DRONE Act of 2015\n" +
-                    "S. 2155: West Coast Ocean Protection Act of 2015\n" +
-                    "S. 2037: Pell Grant Restoration Act of 2015\n" +
-                    "S. 1983: Pechanga Band of Luiseno Mission Indians Water Rights Settlement Act");
-            imageView.setImageResource(R.drawable.boxer);
+
+         //   (1st is names, 2nd is party names, 3rd is end date, 4th is committes, 5th is bills)
+
+
 
         }
-        else if (val.equals("Mike Honda")) {
-            textView.setText("Mike Honda");
-            textView2.setText("Democrat");
-            textView3.setText("End of the Term: 2016");
-            textView4.setText("Committee: United States House Committee on Appropriation");
-            textView5.setText("Name of Recent Bills: H.R. 4471: Educator Preparation Reform Act\n" +
-                    "H.Res. 561: Expressing support for support of transgender acceptance.\n" +
-                    "H.R. 4013: Equity and Excellence in American Education Act of 2015\n" +
-                    "H.Res. 519: Supporting the ideals and goals of the “International Day for the Elimination of ...\n" +
-                    "H.R. 3926: Gun Violence Research Act\n" +
-                    "H.R. 3807: Pay Our Bills Act\n" +
-                    "H.Res. 471: Recognizing Filipino American History Month and celebrating the history and culture of Filipino ...");
-            imageView.setImageResource(R.drawable.mikehonda);
 
-        }
-        else if (val.equals("Diane Feinstein")) {
-            textView.setText("Diane Feinstein");
-            textView2.setText("Democrat");
-            textView3.setText("End of the Term: 2019");
-            textView4.setText("Committee: Chairman of the Senate Intelligence Committee");
-            textView5.setText("Name of Recent Bills: S. 2568: California Desert Conservation, Off-Road Recreation, and Renewable Energy Act\n" +
-                    "S. 2552: Interstate Threats Clarification Act of 2016\n" +
-                    "S. 2533: California Long-Term Provisions for Water Supply and Short-Term Provisions for Emergency Drought Relief ...");
-            imageView.setImageResource(R.drawable.californiasenator);
+        else {
+            String actualName = bundle.getString("LOC_NAME3");
 
-        }
-        else if (val.equals("Anna Eshoo")) {
-            textView.setText("Anna Eshoo");
-            textView2.setText("Democrat");
-            textView3.setText("End of the Term: 2019");
-            textView4.setText("Committee: Energy and Commerce Committee");
-            textView5.setText("Name of Recent Bills: H.R. 3805: Broadband Conduit Deployment Act of 2015\n" +
-                    "H.R. 3664: Promoting Good Cyber Hygiene Act of 2015\n" +
-                    "H.R. 3341: To designate the portion of Moffett Federal Airfield, California, containing the 129th Rescue ...\n" +
-                    "H.R. 2104: American Cures Act");
-            imageView.setImageResource(R.drawable.annaeshoo);
 
-        }
-        else if (val.equals("Barbara Lee")) {
-            textView.setText("Barbara Lee");
-            textView2.setText("Democrat");
-            textView3.setText("End of the Term: 2019");
-            textView4.setText("Committee: House Energy and Commerce Committee");
-            textView5.setText("H.R. 3712: Improving Access to Mental Health Act\n" +
-                    "H.Con.Res. 77: Recognizing the 70th anniversary of the establishment of the United Nations.\n" +
-                    "H.R. 2972: Equal Access to Abortion Coverage in Health Insurance (EACH Woman) Act of 2015");
-            imageView.setImageResource(R.drawable.barbaralee);
+            String positionOne = bundle.getString("position");
+            int pos = Integer.parseInt(positionOne);
+
+            String[] val = bundle.getStringArray("name2");
+            String nameOne = val[pos];
+
+            String[] name1 = bundle.getStringArray("party2");
+            String partyOne = name1[pos];
+
+            String[] endDate1 = bundle.getStringArray("enddate2");
+            String endDateOne = endDate1[pos];
+
+            String[] commOne = bundle.getStringArray("comm");
+            String commOnee = commOne[pos];
+
+            String[] billName = bundle.getStringArray("bill");
+            String bills = billName[pos];
+
+            String[] bioguideID = bundle.getStringArray("picture");
+            String bioGuide = bioguideID[pos];
+
+            String url3 = "https://theunitedstates.io/images/congress/225x275/" + bioGuide + ".jpg";
+            System.out.println("This is the URL " + url3);
+
+            TextView textView = (TextView) findViewById(R.id.repName1);
+            TextView textView2 = (TextView) findViewById(R.id.partyName1);
+            TextView textView3 = (TextView) findViewById(R.id.endOfTerm);
+            TextView textView4 = (TextView) findViewById(R.id.committeeName);
+            TextView textView5 = (TextView) findViewById(R.id.nameRecentBills);
+
+            ImageView imageView = (ImageView) findViewById(R.id.photo4);
+
+            Picasso.with(DetailedView.this).load(bioGuide).into(imageView);
+
+
+            textView.setText(nameOne); ////
+            textView2.setText(partyOne);
+            textView3.setText(endDateOne);
+            textView4.setText("Committee Name: " + commOnee);
+            textView5.setText(bills);
+            // imageView.setImageResource(R.drawable.boxer);
+
 
         }
     }

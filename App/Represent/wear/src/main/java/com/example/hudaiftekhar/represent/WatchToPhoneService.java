@@ -63,7 +63,10 @@ public class WatchToPhoneService extends Service implements GoogleApiClient.Conn
 
         System.out.print("Am I reaching here?");
         Bundle extras = intent.getExtras();
-        String zipCode = extras.getString("LOC_NAME2");
+        final String zipCode = extras.getString("LOC_NAME2");
+
+        //final String shake = extras.getString("SHAKE");
+
         //final String zipCode3 = extras.getString("SHAKE");
         this.zipCodeHere = zipCode;
 
@@ -73,7 +76,12 @@ public class WatchToPhoneService extends Service implements GoogleApiClient.Conn
             public void run() {
                 //first, connect to the apiclient
                 mWatchApiClient.connect();
-                sendMessage("/" + zipCodeHere, zipCodeHere);
+                //if (zipCode != null) {
+                    sendMessage("/DETAILED", zipCodeHere);
+               // }
+               // if (shake != null) {
+               //     sendMessage("/SHAKE", "SHAKE");
+               // }
                // sendMessage("/" + zipCode3, zipCode3);
            //     _this.stopSelf();
                 //now that you're connected, send a massage with the cat name

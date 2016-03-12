@@ -21,14 +21,25 @@ public class CongressionalWear extends Activity {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
 
-        String catName = extras.getString("LOC_NAME");
+
+        System.out.println("LULULULULULULUUUUU");
+        String catName = extras.getString("LOC_NAME"); // length of num reps and senators
+        String[] repNames = extras.getStringArray("REP_NAME"); // rep names
+        String[] partyNames = extras.getStringArray("PARTY_NAME"); // party names
+        String state = extras.getString("STATE");
+        String obama = extras.getString("%O");
+        String county = extras.getString("COUNTY");
+        String romney = extras.getString("%R");
+
+        String[] endDate = extras.getStringArray("END_DATE");
+        String[] comm = extras.getStringArray("COMM");
+        String[] bills = extras.getStringArray("BILLS");
 
         final GridViewPager pager = (GridViewPager) findViewById(R.id.pager);
-        pager.setAdapter(new CongressionalAdapter(this, getFragmentManager(), catName));
+        pager.setAdapter(new CongressionalAdapter(this, getFragmentManager(), catName, repNames, partyNames, state, county, obama, romney, endDate, comm, bills));
 
     }
 
-    /* Hopefully send stuff to phone */
 
 
 }

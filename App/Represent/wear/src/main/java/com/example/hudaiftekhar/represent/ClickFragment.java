@@ -25,12 +25,23 @@ public class ClickFragment extends CardFragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private static final String ARG_PARAM3 = "param3";
+    private static final String ARG_PARAM4 = "param4";
+    private static final String ARG_PARAM5 = "param5";
 
+    private static final String ARG_PARAM6 = "param6";
+    private static final String ARG_PARAM7 = "param7";
+    private static final String ARG_PARAM8 = "param8";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
     private String mParam3;
+    private String mParam4;
+    private String mParam5;
+    private String mParam6;
+    private String mParam7;
+    private String mParam8;
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -48,11 +59,18 @@ public class ClickFragment extends CardFragment {
      */
     // TODO: Rename and change types and number of parameters
 
-    public static ClickFragment newInstance(String param1, String param2, String param3) {
+    public static ClickFragment newInstance(String param1, String param2, String param3, String param4, String param5, String param6, String param7, String param8) {
         ClickFragment fragment = new ClickFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
+        args.putString(ARG_PARAM3, param3);
+        args.putString(ARG_PARAM4, param4);
+        args.putString(ARG_PARAM5, param5);
+        args.putString(ARG_PARAM6, param6);
+        args.putString(ARG_PARAM7, param7);
+        args.putString(ARG_PARAM8, param8);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -64,6 +82,12 @@ public class ClickFragment extends CardFragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+            mParam3 = getArguments().getString(ARG_PARAM3);
+            mParam4 = getArguments().getString(ARG_PARAM4);
+            mParam5 = getArguments().getString(ARG_PARAM5);
+            mParam6 = getArguments().getString(ARG_PARAM6);
+            mParam7 = getArguments().getString(ARG_PARAM7);
+            mParam8 = getArguments().getString(ARG_PARAM8);
         }
     }
 
@@ -75,20 +99,33 @@ public class ClickFragment extends CardFragment {
         final View here = inflater.inflate(R.layout.fragment_click, container, false);
         final ViewGroup container1 = container;
 
-        TextView hi = (TextView) here.findViewById(R.id.titleName);
-        hi.setText(mParam2);
-        TextView hi3 = (TextView) here.findViewById(R.id.titleName2);
+        TextView hi = (TextView) here.findViewById(R.id.textView2);
         hi.setText(mParam1);
+        TextView hi3 = (TextView) here.findViewById(R.id.textView3);
+        hi.setText(mParam2);
+        TextView hi4 = (TextView) here.findViewById(R.id.textView4);
+        hi4.setText(mParam3);
+        TextView hi5 = (TextView) here.findViewById(R.id.textView5);
+        hi5.setText(mParam4);
+        TextView hi6 = (TextView) here.findViewById(R.id.textView6);
+        hi6.setText(mParam5);
+
+        System.out.println("These are the parameters");
+        System.out.println(mParam1 + " one ");
+        System.out.println(mParam2 + " two ");
+        System.out.println(mParam3 + " three ");
+        System.out.println(mParam4 + " four ");
+        System.out.println(mParam5 + " five ");
+        System.out.println("****************");
         
 
 
-        // sending names for Barbara Boxer to WatchToPhone
-        here.setOnClickListener(new View.OnClickListener() {
+         here.setOnClickListener(new View.OnClickListener() {
             // try to send message
             @Override
             public void onClick(View v) {
                 Intent sendIntent8 = new Intent(getActivity(), WatchToPhoneService.class);
-                sendIntent8.putExtra("LOC_NAME2", mParam1);
+                sendIntent8.putExtra("LOC_NAME2", mParam2 + "\t" + mParam3 + "\t" + mParam6 + "\t" + mParam7 + "\t" + mParam8);
                 getActivity().startService(sendIntent8);
             }
         });

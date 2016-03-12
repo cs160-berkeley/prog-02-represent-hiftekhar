@@ -44,6 +44,8 @@
         android:layout_marginRight = "100px"
         ></TextView>
 
+
+
     <TextView
         android:id = "@+id/latesttweet"
         android:layout_height="wrap_content"

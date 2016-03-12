@@ -3,7 +3,9 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+    android:background="#83e4ff">
+
 
     <ImageView
         android:layout_width="wrap_content"
@@ -12,7 +14,12 @@
         android:layout_gravity="center_horizontal"
         android:maxHeight="100dp"
         android:maxWidth="100dp"
-        android:src="@drawable/image_two" />
+        android:src="@drawable/image_two"
+        android:background="#83e4ff" />
+
+
+
+
 
     <ListView
         android:id = "@+id/my_list"

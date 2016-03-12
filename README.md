@@ -8,7 +8,7 @@ Huda ([hiftekhar@berkeley.edu](mailto:your_email@berkeley.edu))
 
 ## Demo Video
 
-See [your demo video title here] (http://www.youtube.com/watch?v=I5xSq4SdvNQ)
+See http://www.youtube.com/watch?v=Gzg2qdHkTmw
 
 ## Screenshots
 
@@ -18,6 +18,11 @@ See [your demo video title here] (http://www.youtube.com/watch?v=I5xSq4SdvNQ)
 
 <img src="screenshots/pic3.png" height="400" alt="Screenshot"/>
 <img src="screenshots/pic4.png" height="400" alt="Screenshot"/>
+
+<img src="screenshots/screen2.png" height="400" alt="Screenshot"/>
+
+<img src="screenshots/screen3.png" height="400" alt="Screenshot"/>
+ 
 ## Acknowledgments
 
 * Hat tip to anyone who's code was used

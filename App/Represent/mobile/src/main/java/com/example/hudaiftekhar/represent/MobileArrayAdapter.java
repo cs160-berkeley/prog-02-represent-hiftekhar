@@ -14,6 +14,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+import com.twitter.sdk.android.Twitter;
+import com.twitter.sdk.android.core.*;
+import com.twitter.sdk.android.core.identity.TwitterLoginButton;
+import com.twitter.sdk.android.core.models.Tweet;
+import com.twitter.sdk.android.tweetui.*;
+import io.fabric.sdk.android.Fabric;
 
 
 import android.content.Context;
@@ -29,11 +36,30 @@ import android.widget.Button;
 public class MobileArrayAdapter extends ArrayAdapter<String> {
     private final Context context;
     private final String[] values;
+    private final String[] values2;
+    private final String[] values3;
+    private final String[] values4;
+    private final String[] values5;
+    private final String[] values6;
+    private final String[] values7;
 
-    public MobileArrayAdapter(Context context, String[] values) {
+
+    private final String key = "GIrn4To49wc8FpKD2vMCDEPwl";
+    private final String secret = "2Vhrfwd5NTQe12yx4T4Odo3lQhh8xrW5e0Qv9OKsNB2ZPdjlWW";
+
+
+//    private TwitterLoginButton loginButton;
+
+    public MobileArrayAdapter(Context context, String[] values, String[] values2, String[] values3, String[] values4, String[] values5, String[] values6, String[] values7) {
         super(context, R.layout.my_list, values);
         this.context = context;
         this.values = values;
+        this.values2 = values2;
+        this.values3 = values3;
+        this.values4 = values4;
+        this.values5 = values5;
+        this.values6 = values6;
+        this.values7 = values7;
     }
 
     @Override
@@ -43,6 +69,8 @@ public class MobileArrayAdapter extends ArrayAdapter<String> {
 
         View rowView;
         rowView = inflater.inflate(R.layout.my_list, parent, false);
+
+
 
 
         TextView textView = (TextView) rowView.findViewById(R.id.name);
@@ -58,54 +86,29 @@ public class MobileArrayAdapter extends ArrayAdapter<String> {
         button11.setText("MORE INFO");
 
         textView.setText(values[position]);
+        textView5.setText("tweet");
+
+       // loginButton = (TwitterLoginButton) findViewById(R.id.twitter_login_button);
 
 
+        textView.setText(values[position]);
+        textView2.setText(values2[position]);
+        textView3.setText(values3[position]);
+        textView4.setText(values4[position]);
+
+
+        System.out.println("This is the values " + values7[position]);
+        String url3 = "https://theunitedstates.io/images/congress/225x275/" + values7[position] + ".jpg";
+        System.out.println("THIS IS THE URL " + url3);
+        Picasso.with(context).load(url3).into(imageView);
 
 
         // Change icon based on name
         String s = values[position];
 
+
         System.out.println(s);
 
-        if (s.equals("Barbara Boxer")) {
-            imageView.setImageResource(R.drawable.boxer);
-
-
-            textView2.setText("Democrat");
-            textView3.setText("bboxer@gmail.com");
-            textView4.setText("https://boxer.senate.gov/");
-            textView5.setText("Justice delayed is justice denied. #DoYourJob ");
-
-        } else if (s.equals("Mike Honda")) {
-            imageView.setImageResource(R.drawable.mikehonda);
-
-            textView2.setText("Democrat");
-            textView3.setText("google.com/+mikehonda");
-            textView4.setText("https://honda.house.gov/");
-            textView5.setText(" 'We do not want to make a mistake as nation who believes in the rule of law.' to the @FBI Director about the #Apple case.");
-
-        } else if (s.equals("Barbara Lee")) {
-            imageView.setImageResource(R.drawable.barbaralee);
-            textView2.setText("Democrat");
-            textView3.setText("blee@gmail.com");
-            textView4.setText("https://lee.house.gov/");
-            textView5.setText("ICYMI: The @mlkfreedomctr will live stream the Barbara Lee & Elihu Harris lecture w/ @bobbyseale tonight at 6:45pm. Don’t miss it!");
-
-        } else if (s.equals("Diane Feinstein")) {
-            imageView.setImageResource(R.drawable.californiasenator);
-            textView2.setText("Democrat");
-            textView3.setText("dfeinstein@gmail.com");
-            textView4.setText("https://feinstein.senate.gov/");
-            textView5.setText("Always great to meet with the California Cut Flower Commission. 75% of domestic flowers come from California! ");
-
-        } else if (s.equals("Anna Eshoo")) {
-            imageView.setImageResource(R.drawable.annaeshoo);
-            textView2.setText("Democrat");
-            textView3.setText("aeshoo@gmail.com");
-            textView4.setText("https://eshoo.house.gov/");
-            textView5.setText("ICYMI: My statement on the Apple court order. http://goo.gl/yJER50");
-
-        }
 
         return rowView;
     }
